@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Diwali 🪔</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  color: #fff1ce;
+  font-family: Georgia, serif;
+  background: radial-gradient(circle, #59315d, #21112f, #10091c);
+  overflow-x: hidden;
+}
+
+.card {
+  width: 100%;
+  max-width: 650px;
+  padding: 40px 22px;
+  border: 1px solid #ffd77a;
+  border-radius: 25px;
+  background: rgba(20,10,35,.88);
+  box-shadow: 0 0 40px #ffbd5550;
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  color: #ffd77a;
+  font-size: clamp(45px, 10vw, 75px);
+  text-shadow: 0 0 20px orange;
+  margin: 20px 0;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.diyas {
+  font-size: 48px;
+  margin: 25px 0;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 5px orange); }
+  to { filter: drop-shadow(0 0 25px gold); }
+}
+
+button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(90deg,#ffe7a1,#ffad36);
+  color: #35172b;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+#wishes {
+  display: none;
+  border-top: 1px solid gold;
+  margin-top: 25px;
+  padding-top: 20px;
+  animation: appear 1s ease;
+}
+
+#wishes.show { display: block; }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+footer {
+  margin-top: 30px;
+  font-size: 13px;
+  color: #ffd77a;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<div class="card">
+
+  <p>✨ FESTIVAL OF LIGHTS ✨</p>
+
+  <h1>Happy<br>Diwali!</h1>
+
+  <p>
+    May the beautiful lights of Diwali
+    brighten your life with happiness,
+    peace, prosperity and success.
+  </p>
+
+  <div class="diyas">🪔 🪔 🪔</div>
+
+  <button onclick="openWishes()">
+    Open Your Diwali Wishes ✨
+  </button>
+
+  <div id="wishes">
+
+    <h2 style="color:#ffd77a">
+      ❤️ Wishing You & Your Family ❤️
+    </h2>
+
+    <p>
+      May this Diwali bring new opportunities,
+      good health, endless happiness and
+      prosperity into your life.
+    </p>
+
+    <p>
+      Let us spread love, share smiles,
+      help others and bring light into
+      every heart.
+    </p>
+
+    <h2 style="color:#ffcf70">
+      இனிய தீபாவளி நல்வாழ்த்துக்கள்! 🪔
+    </h2>
+
+    <p>
+      May every diya bring a new reason
+      to smile. Have a wonderful Diwali!
+    </p>
+
+    <p>With love and warm wishes ❤️</p>
+
+  </div>
+
+  <button onclick="shareGreeting()">
+    Share Diwali Wishes ↗
+  </button>
+
+  <footer>
+    ✨ Spread Light • Share Love • Be Happy ✨
+  </footer>
+
+</div>
+
+<script>
+function openWishes() {
+  document.getElementById("wishes")
+    .classList.add("show");
+
+  launchFireworks();
+}
+
+async function shareGreeting() {
+  const data = {
+    title: "Happy Diwali 🪔",
+    text: "Wishing you and your family a beautiful Diwali filled with happiness, peace and prosperity!",
+    url: window.location.href
+  };
+
+  if (navigator.share) {
+    try {
+      await navigator.share(data);
+    } catch(e) {}
+  } else {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert("Website link copied!");
+    } catch(e) {
+      prompt("Copy your Diwali website link:", window.location.href);
+    }
+  }
+}
+
+// Fireworks animation
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+function launchFireworks() {
+  for(let i = 0; i < 100; i++) {
+    let angle = Math.random() * Math.PI * 2;
+    let speed = Math.random() * 5 + 1;
+
+    particles.push({
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 80,
+      color: Math.random() > .5 ? "#ffd700" : "#ff8c42"
+    });
+  }
+}
+
+function animate() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  if(Math.random() < 0.025) {
+    launchRandom();
+  }
+
+  particles = particles.filter(p => p.life > 0);
+
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.025;
+    p.life--;
+
+    ctx.globalAlpha = p.life / 80;
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,2,0,Math.PI*2);
+    ctx.fill();
+  });
+
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(animate);
+}
+
+function launchRandom() {
+  let x = Math.random() * canvas.width;
+  let y = Math.random() * canvas.height * .6;
+
+  for(let i=0;i<35;i++) {
+    let a = Math.random() * Math.PI * 2;
+    let s = Math.random() * 3 + 1;
+
+    particles.push({
+      x:x, y:y,
+      vx:Math.cos(a)*s,
+      vy:Math.sin(a)*s,
+      life:70,
+      color:"#ffd77a"
+    });
+  }
+}
+
+animate();
+</script>
+
+</body>
+</html>
