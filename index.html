@@ -3,274 +3,318 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Diwali 🪔</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ultimate Happy Diwali 🪔</title>
 
 <style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  text-align: center;
-  color: #fff1ce;
-  font-family: Georgia, serif;
-  background: radial-gradient(circle, #59315d, #21112f, #10091c);
-  overflow-x: hidden;
+*{box-sizing:border-box}
+body{
+ margin:0;text-align:center;color:#fff1d0;
+ font-family:Georgia,serif;
+ background:radial-gradient(circle,#63345c,#24132f,#10091d);
+ padding:20px;overflow-x:hidden
 }
-
-.card {
-  width: 100%;
-  max-width: 650px;
-  padding: 40px 22px;
-  border: 1px solid #ffd77a;
-  border-radius: 25px;
-  background: rgba(20,10,35,.88);
-  box-shadow: 0 0 40px #ffbd5550;
-  position: relative;
-  z-index: 2;
+h1{font-size:clamp(42px,10vw,70px);color:#ffd66b;
+ text-shadow:0 0 20px orange;margin:12px}
+h2{color:#ffd66b}
+p{line-height:1.6}
+.card{
+ max-width:760px;margin:20px auto;padding:28px 18px;
+ border:1px solid #ffd66b;border-radius:25px;
+ background:#190f2aee;box-shadow:0 0 35px #ffbd5540
 }
-
-h1 {
-  color: #ffd77a;
-  font-size: clamp(45px, 10vw, 75px);
-  text-shadow: 0 0 20px orange;
-  margin: 20px 0;
+button{
+ border:0;border-radius:25px;padding:13px 20px;
+ margin:7px;background:linear-gradient(90deg,#ffe7a1,#ffae36);
+ color:#35172b;font-weight:bold;font-size:15px;cursor:pointer
 }
-
-p {
-  font-size: 18px;
-  line-height: 1.7;
+button:active{transform:scale(.95)}
+.section{
+ margin:25px 0;padding:20px 10px;
+ border-top:1px solid #ffd66b66
 }
-
-.diyas {
-  font-size: 48px;
-  margin: 25px 0;
-  animation: glow 1.5s infinite alternate;
+.actor{font-size:65px;display:inline-block}
+#man{transition:transform .3s}
+.run{animation:run .7s ease-in-out}
+@keyframes run{
+ 0%{transform:translateX(0)}
+ 50%{transform:translateX(90px)}
+ 100%{transform:translateX(0)}
 }
-
-@keyframes glow {
-  from { filter: drop-shadow(0 0 5px orange); }
-  to { filter: drop-shadow(0 0 25px gold); }
+.dance{animation:dance .4s infinite alternate}
+@keyframes dance{
+ from{transform:rotate(-18deg) scale(1)}
+ to{transform:rotate(18deg) scale(1.15)}
 }
-
-button {
-  padding: 15px 25px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(90deg,#ffe7a1,#ffad36);
-  color: #35172b;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 10px;
+#sky{position:fixed;inset:0;pointer-events:none;z-index:5}
+.cracker{font-size:45px;min-height:70px}
+#sweetBox{font-size:35px;min-height:65px}
+.sweet{display:inline-block;animation:pop .5s}
+@keyframes pop{
+ from{transform:scale(0)}
+ to{transform:scale(1)}
 }
-
-button:hover {
-  transform: scale(1.05);
+#wheel{
+ width:260px;height:260px;max-width:80vw;max-height:80vw;
+ border-radius:50%;margin:25px auto;
+ border:7px solid #ffdc79;
+ background:conic-gradient(
+ #f44336 0deg 45deg,#ff9800 45deg 90deg,
+ #e91e63 90deg 135deg,#8bc34a 135deg 180deg,
+ #2196f3 180deg 225deg,#9c27b0 225deg 270deg,
+ #ff5722 270deg 315deg,#cddc39 315deg 360deg
+ );
+ display:flex;align-items:center;justify-content:center;
+ font-size:35px;
+ box-shadow:0 0 25px orange;
+ transition:transform 4s cubic-bezier(.15,.7,.15,1)
 }
-
-#wishes {
-  display: none;
-  border-top: 1px solid gold;
-  margin-top: 25px;
-  padding-top: 20px;
-  animation: appear 1s ease;
-}
-
-#wishes.show { display: block; }
-
-@keyframes appear {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-footer {
-  margin-top: 30px;
-  font-size: 13px;
-  color: #ffd77a;
-}
-
-canvas {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
+.pointer{font-size:35px;margin-bottom:-40px;position:relative;z-index:2}
+#wheelResult{color:#ffe38c;font-size:21px;font-weight:bold;min-height:35px}
+#message{font-size:18px;color:#ffdc79}
+footer{color:#ffd66b;margin:25px;font-size:13px}
 </style>
 </head>
 
 <body>
-
-<canvas id="fireworks"></canvas>
+<canvas id="sky"></canvas>
 
 <div class="card">
+ <p>✨ WELCOME TO THE FESTIVAL OF LIGHTS ✨</p>
+ <h1>Happy Diwali! 🪔</h1>
+ <p>Forget everything. Today is for happiness, sweets, fun and celebrations!</p>
+ <div style="font-size:45px">🪔 🪔 🪔</div>
 
-  <p>✨ FESTIVAL OF LIGHTS ✨</p>
+ <div class="section">
+  <h2>🎆 1. Let's Burst Some Crackers!</h2>
+  <div id="man" class="actor">🧍</div>
+  <p id="manText">Hey! I have crackers. Shall we celebrate?</p>
+  <button onclick="lightCracker()">🧨 Light the Cracker</button>
+  <div class="cracker" id="cracker">🎇</div>
+  <p id="crackerText">Waiting for the celebration...</p>
+ </div>
 
-  <h1>Happy<br>Diwali!</h1>
+ <div class="section">
+  <h2>🍬 2. Sweet Sharing Time!</h2>
+  <div class="actor">😋</div>
+  <p>Don't just watch. Share some sweets!</p>
+  <div id="sweetBox">🍬 🍭 🍫</div>
+  <button onclick="shareSweet()">Give a Sweet 🍯</button>
+  <button onclick="eatSweet()">Eat a Sweet 😋</button>
+  <p id="sweetText">Sharing is caring! ❤️</p>
+ </div>
 
-  <p>
-    May the beautiful lights of Diwali
-    brighten your life with happiness,
-    peace, prosperity and success.
-  </p>
+ <div class="section">
+  <h2>🎡 3. Diwali Lucky Spinner</h2>
+  <p>Let's see what your Diwali surprise is!</p>
+  <div class="pointer">🔻</div>
+  <div id="wheel">🎁</div>
+  <button id="spinButton" onclick="spinWheel()">SPIN THE WHEEL!</button>
+  <p id="wheelResult">Your luck is waiting...</p>
+ </div>
 
-  <div class="diyas">🪔 🪔 🪔</div>
+ <div class="section">
+  <h2>💃 4. Dance Like Nobody Is Watching!</h2>
+  <div id="dancer" class="actor">🕺</div>
+  <p id="danceText">Come on! It's Diwali!</p>
+  <button onclick="dance()">Start Dancing 🪩</button>
+  <button onclick="stopDance()">Stop Dancing 😂</button>
+ </div>
 
-  <button onclick="openWishes()">
-    Open Your Diwali Wishes ✨
-  </button>
+ <div class="section">
+  <h2>❤️ 5. A Special Diwali Wish</h2>
+  <button onclick="showWish()">Open Your Surprise ❤️</button>
+  <div id="message"></div>
+ </div>
 
-  <div id="wishes">
+ <div class="section">
+  <h2>📲 Share the Happiness!</h2>
+  <p>Don't celebrate alone. Send this fun Diwali experience to your friends and family.</p>
+  <button onclick="sharePage()">Share Diwali Website ↗</button>
+ </div>
 
-    <h2 style="color:#ffd77a">
-      ❤️ Wishing You & Your Family ❤️
-    </h2>
-
-    <p>
-      May this Diwali bring new opportunities,
-      good health, endless happiness and
-      prosperity into your life.
-    </p>
-
-    <p>
-      Let us spread love, share smiles,
-      help others and bring light into
-      every heart.
-    </p>
-
-    <h2 style="color:#ffcf70">
-      இனிய தீபாவளி நல்வாழ்த்துக்கள்! 🪔
-    </h2>
-
-    <p>
-      May every diya bring a new reason
-      to smile. Have a wonderful Diwali!
-    </p>
-
-    <p>With love and warm wishes ❤️</p>
-
-  </div>
-
-  <button onclick="shareGreeting()">
-    Share Diwali Wishes ↗
-  </button>
-
-  <footer>
-    ✨ Spread Light • Share Love • Be Happy ✨
-  </footer>
-
+ <footer>
+  ✨ Spread Light • Share Sweets • Spread Happiness ✨
+  <br><br>Made with ❤️ for Diwali
+ </footer>
 </div>
 
 <script>
-function openWishes() {
-  document.getElementById("wishes")
-    .classList.add("show");
-
-  launchFireworks();
+// Sound effects using browser audio
+let audio;
+function sound(freq=500,duration=.2,type="sine"){
+ try{
+  audio=audio||new(window.AudioContext||window.webkitAudioContext)();
+  if(audio.state==="suspended")audio.resume();
+  const osc=audio.createOscillator();
+  const gain=audio.createGain();
+  osc.type=type;
+  osc.frequency.value=freq;
+  gain.gain.setValueAtTime(.12,audio.currentTime);
+  gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);
+  osc.connect(gain);gain.connect(audio.destination);
+  osc.start();osc.stop(audio.currentTime+duration);
+ }catch(e){}
 }
 
-async function shareGreeting() {
-  const data = {
-    title: "Happy Diwali 🪔",
-    text: "Wishing you and your family a beautiful Diwali filled with happiness, peace and prosperity!",
-    url: window.location.href
-  };
-
-  if (navigator.share) {
-    try {
-      await navigator.share(data);
-    } catch(e) {}
-  } else {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      alert("Website link copied!");
-    } catch(e) {
-      prompt("Copy your Diwali website link:", window.location.href);
-    }
-  }
+// Fireworks canvas
+const canvas=document.getElementById("sky");
+const ctx=canvas.getContext("2d");
+let particles=[];
+function resize(){
+ canvas.width=innerWidth;
+ canvas.height=innerHeight;
 }
-
-// Fireworks animation
-const canvas = document.getElementById("fireworks");
-const ctx = canvas.getContext("2d");
-
-let particles = [];
-
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-window.addEventListener("resize", resize);
 resize();
+window.addEventListener("resize",resize);
 
-function launchFireworks() {
-  for(let i = 0; i < 100; i++) {
-    let angle = Math.random() * Math.PI * 2;
-    let speed = Math.random() * 5 + 1;
-
-    particles.push({
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2,
-      vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed,
-      life: 80,
-      color: Math.random() > .5 ? "#ffd700" : "#ff8c42"
-    });
-  }
-}
-
-function animate() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-
-  if(Math.random() < 0.025) {
-    launchRandom();
-  }
-
-  particles = particles.filter(p => p.life > 0);
-
-  particles.forEach(p => {
-    p.x += p.vx;
-    p.y += p.vy;
-    p.vy += 0.025;
-    p.life--;
-
-    ctx.globalAlpha = p.life / 80;
-    ctx.fillStyle = p.color;
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,2,0,Math.PI*2);
-    ctx.fill();
+function burst(x,y){
+ for(let i=0;i<65;i++){
+  const a=Math.random()*Math.PI*2;
+  const s=1+Math.random()*5;
+  particles.push({
+   x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,
+   life:65,color:`hsl(${Math.random()*360},100%,65%)`
   });
-
-  ctx.globalAlpha = 1;
-  requestAnimationFrame(animate);
+ }
 }
-
-function launchRandom() {
-  let x = Math.random() * canvas.width;
-  let y = Math.random() * canvas.height * .6;
-
-  for(let i=0;i<35;i++) {
-    let a = Math.random() * Math.PI * 2;
-    let s = Math.random() * 3 + 1;
-
-    particles.push({
-      x:x, y:y,
-      vx:Math.cos(a)*s,
-      vy:Math.sin(a)*s,
-      life:70,
-      color:"#ffd77a"
-    });
-  }
+function animate(){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ particles=particles.filter(p=>p.life>0);
+ particles.forEach(p=>{
+  p.x+=p.vx;p.y+=p.vy;p.vy+=.04;p.life--;
+  ctx.globalAlpha=p.life/65;
+  ctx.fillStyle=p.color;
+  ctx.beginPath();ctx.arc(p.x,p.y,3,0,7);ctx.fill();
+ });
+ ctx.globalAlpha=1;
+ requestAnimationFrame(animate);
 }
-
 animate();
-</script>
 
+// Lighting crackers
+let crackerCount=0;
+function lightCracker(){
+ const man=document.getElementById("man");
+ const text=document.getElementById("manText");
+ const cracker=document.getElementById("cracker");
+ const result=document.getElementById("crackerText");
+
+ man.textContent="🧑‍🚒";
+ man.classList.add("run");
+ text.textContent="Lighting the fuse... RUN! RUN! RUN! 😂";
+ cracker.textContent="🔥💥";
+ result.textContent="3... 2... 1... BOOOOM!";
+ sound(100,0.8,"sawtooth");
+
+ setTimeout(()=>{
+  burst(innerWidth/2,innerHeight/2);
+  cracker.textContent="🎆✨🎇";
+  result.textContent="BOOOOOM! Happy Diwali! 🥳";
+  man.textContent="🏃";
+  sound(850,.5,"square");
+ },900);
+
+ setTimeout(()=>{
+  man.textContent="🕺";
+  man.classList.remove("run");
+  text.textContent="That was awesome! One more? 😂";
+ },1900);
+
+ crackerCount++;
+}
+
+// Sweet sharing
+const sweets=["🍬","🍭","🍫","🍩","🍮","🍯"];
+let sweetIndex=0;
+function shareSweet(){
+ const sweet=sweets[sweetIndex++%sweets.length];
+ document.getElementById("sweetBox").innerHTML=
+ `<span class="sweet">${sweet} ➜ 😋</span>`;
+ document.getElementById("sweetText").textContent=
+ "A sweet for you! Happy Diwali! ❤️";
+ sound(650,.2);
+}
+function eatSweet(){
+ document.getElementById("sweetBox").innerHTML="😋 NOM NOM NOM!";
+ document.getElementById("sweetText").textContent=
+ "Yummy! Diet starts tomorrow! 😂";
+ sound(400,.3);
+}
+
+// Spinner
+const prizes=[
+ "🥳 Double happiness!",
+ "💰 Wealth and prosperity!",
+ "❤️ Unlimited love!",
+ "🍬 Unlimited sweets!",
+ "✈️ Travel and adventures!",
+ "🏆 Success and achievement!",
+ "😂 No Monday meetings!",
+ "🪔 Peace and blessings!"
+];
+let rotation=0,spinning=false;
+function spinWheel(){
+ if(spinning)return;
+ spinning=true;
+ const wheel=document.getElementById("wheel");
+ const result=document.getElementById("wheelResult");
+ document.getElementById("spinButton").disabled=true;
+ const index=Math.floor(Math.random()*prizes.length);
+ rotation+=1440+Math.random()*360;
+ wheel.style.transform=`rotate(${rotation}deg)`;
+ result.textContent="Spinning your Diwali luck...";
+ sound(700,.3);
+ setTimeout(()=>{
+  result.textContent="🎉 "+prizes[index];
+  burst(innerWidth/2,innerHeight/2);
+  sound(900,.5);
+  spinning=false;
+  document.getElementById("spinButton").disabled=false;
+ },4100);
+}
+
+// Dance
+function dance(){
+ document.getElementById("dancer").classList.add("dance");
+ document.getElementById("danceText").textContent=
+ "OMG! What a dance! 💃🕺";
+ sound(750,.3);
+}
+function stopDance(){
+ document.getElementById("dancer").classList.remove("dance");
+ document.getElementById("danceText").textContent=
+ "Dance break over. Time for sweets! 😂";
+}
+
+// Wishes
+function showWish(){
+ document.getElementById("message").innerHTML=
+ "May your home shine with happiness, "+
+ "your heart overflow with love, and your "+
+ "life be filled with health, peace and success. "+
+ "<br><br>இனிய தீபாவளி நல்வாழ்த்துக்கள்! 🪔 "+
+ "<br><br>Spread kindness. Help someone. "+
+ "Make this Diwali meaningful. ❤️";
+ burst(innerWidth/2,innerHeight/2);
+ sound(800,.5);
+}
+
+// Share
+async function sharePage(){
+ const data={
+  title:"Happy Diwali! 🪔",
+  text:"Come and enjoy this fun Diwali celebration! 🎆🍬",
+  url:location.href
+ };
+ try{
+  if(navigator.share)await navigator.share(data);
+  else{
+   await navigator.clipboard.writeText(location.href);
+   alert("Website link copied! Share it on WhatsApp.");
+  }
+ }catch(e){}
+}
+</script>
 </body>
 </html>
